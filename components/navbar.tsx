@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -85,19 +86,19 @@ export function Navbar() {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-4">
-              <Link
-                href="/member"
-                className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="#contact"
-                className="btn-premium relative px-5 py-2.5 text-[13px] font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transition-all duration-300"
-              >
-                Start Free Trial
-              </Link>
+            <div className="hidden lg:flex items-center gap-3">
+              <Button asChild variant="outline" className="border-white/10 bg-background/40 text-foreground hover:bg-background/70">
+                <Link href="/member/login">Login</Link>
+              </Button>
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link href="/member/signup">Sign Up</Link>
+              </Button>
+              <Button asChild variant="secondary" className="bg-white/5 text-foreground hover:bg-white/10">
+                <Link href="/trainer/login">Trainer Login</Link>
+              </Button>
+              <Button asChild variant="secondary" className="bg-white/5 text-foreground hover:bg-white/10">
+                <Link href="/admin/login">Admin Login</Link>
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -171,20 +172,26 @@ export function Navbar() {
                   </motion.a>
                 ))}
                 <div className="pt-4 mt-4 border-t border-white/10 space-y-3">
-                  <Link
-                    href="/member"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    href="#contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-lg font-semibold text-primary-foreground bg-primary rounded-xl text-center hover:bg-primary/90 transition-colors"
-                  >
-                    Start Free Trial
-                  </Link>
+                  <Button asChild variant="outline" className="w-full justify-center border-white/10 bg-background/40 text-foreground hover:bg-background/70">
+                    <Link href="/member/login" onClick={() => setIsMobileMenuOpen(false)}>
+                      Login
+                    </Link>
+                  </Button>
+                  <Button asChild className="w-full justify-center bg-primary text-primary-foreground hover:bg-primary/90">
+                    <Link href="/member/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                      Sign Up
+                    </Link>
+                  </Button>
+                  <Button asChild variant="secondary" className="w-full justify-center bg-white/5 text-foreground hover:bg-white/10">
+                    <Link href="/trainer/login" onClick={() => setIsMobileMenuOpen(false)}>
+                      Trainer Login
+                    </Link>
+                  </Button>
+                  <Button asChild variant="secondary" className="w-full justify-center bg-white/5 text-foreground hover:bg-white/10">
+                    <Link href="/admin/login" onClick={() => setIsMobileMenuOpen(false)}>
+                      Admin Login
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </motion.div>

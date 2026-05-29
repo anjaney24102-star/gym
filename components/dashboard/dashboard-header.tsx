@@ -14,15 +14,48 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { memberData } from "@/lib/dashboard-data"
+import { readAuthSession } from "@/lib/auth-session"
+
+export type DashboardNotification = {
+  id: number
+  message: string
+  time: string
+  read: boolean
+}
 
 interface DashboardHeaderProps {
   title: string
   subtitle?: string
   onMenuClick?: () => void
+  notifications?: DashboardNotification[]
 }
 
-export function DashboardHeader({ title, subtitle, onMenuClick }: DashboardHeaderProps) {
-  const unreadNotifications = memberData.notifications.filter((n) => !n.read).length
+export function DashboardHeader({ title, subtitle, onMenuClick, notifications }: DashboardHeaderProps) {
+  const session = readAuthSession()
+  const expiryNotice =
+    session?.role === "member" && session.membershipExpiresAt
+      ? (() => {
+          const expiryDate = new Date(session.membershipExpiresAt)
+          const today = new Date()
+          const daysRemaining = Math.ceil((expiryDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+
+          if (daysRemaining > 10) return null
+
+          return {
+            id: -1,
+            message:
+              daysRemaining < 0
+                ? "Your membership has expired. Please renew it today."
+                : `Your membership expires in ${daysRemaining} day${daysRemaining === 1 ? "" : "s"}. Please renew soon.`,
+            time: "Now",
+            read: false,
+          }
+        })()
+      : null
+
+  const baseItems = notifications ?? memberData.notifications
+  const items = expiryNotice ? [expiryNotice, ...baseItems] : baseItems
+  const unreadNotifications = items.filter((n) => !n.read).length
 
   return (
     <motion.header
@@ -71,7 +104,7 @@ export function DashboardHeader({ title, subtitle, onMenuClick }: DashboardHeade
             <DropdownMenuContent align="end" className="w-80">
               <DropdownMenuLabel>Notifications</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              {memberData.notifications.map((notification) => (
+              {items.map((notification) => (
                 <DropdownMenuItem key={notification.id} className="flex flex-col items-start gap-1 py-3">
                   <div className="flex items-center gap-2 w-full">
                     {!notification.read && (

@@ -22,6 +22,7 @@ import {
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import { clearAdminSession } from "@/lib/admin-session"
 
 const adminNavItems = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -118,7 +119,7 @@ export function AdminSidebar() {
           )}
           asChild
         >
-          <Link href="/">
+          <Link href="/" onClick={() => clearAdminSession()}>
             <LogOut className="w-5 h-5" />
             {!collapsed && <span className="ml-2">Logout</span>}
           </Link>

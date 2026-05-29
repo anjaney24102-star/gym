@@ -29,9 +29,9 @@ export default function AttendanceTracker() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY)
       const initial = raw
-        ? JSON.parse(raw)
+        ? (JSON.parse(raw) as string[])
         : memberData.attendance.map((d) => startOfDayISO(new Date(d.date)))
-      setRecords(Array.from(new Set(initial)).sort((a, b) => (a < b ? 1 : -1)))
+      setRecords(Array.from(new Set(initial)).sort((a, b) => (a > b ? -1 : 1)))
     } catch (e) {
       setRecords([])
     }
@@ -44,7 +44,7 @@ export default function AttendanceTracker() {
   const handleCheckIn = () => {
     if (alreadyCheckedIn) return
     setRecords((prev) => {
-      const next = Array.from(new Set([todayISO, ...prev])).sort((a, b) => (a < b ? 1 : -1))
+      const next = Array.from(new Set([todayISO, ...prev])).sort((a, b) => (a > b ? -1 : 1))
       return next
     })
   }

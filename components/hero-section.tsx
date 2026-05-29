@@ -109,6 +109,13 @@ export function HeroSection() {
               Member Login
               <span className="w-6 h-px bg-current transform group-hover:w-8 transition-all duration-300" />
             </Link>
+            <Link
+              href="/trainer/login"
+              className="group inline-flex items-center gap-2 px-8 py-4 text-base font-medium text-foreground/90 hover:text-foreground transition-colors duration-300"
+            >
+              Trainer Login
+              <span className="w-6 h-px bg-current transform group-hover:w-8 transition-all duration-300" />
+            </Link>
           </motion.div>
 
           {/* Stats Row */}

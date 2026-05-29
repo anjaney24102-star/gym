@@ -64,7 +64,7 @@ export const exerciseLibrary = [
     category: "Chest",
     difficulty: "Intermediate",
     videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg",
-    thumbnail: "/exercises/bench-press.jpg",
+    thumbnail: "/exercises/placeholder.jpg",
     description: "Primary chest exercise targeting pectorals, front deltoids, and triceps.",
   },
   {
@@ -73,7 +73,7 @@ export const exerciseLibrary = [
     category: "Back",
     difficulty: "Advanced",
     videoUrl: "https://www.youtube.com/embed/op9kVnSso6Q",
-    thumbnail: "/exercises/deadlift.jpg",
+    thumbnail: "/exercises/back.jpg",
     description: "Compound movement targeting posterior chain including back, glutes, and hamstrings.",
   },
   {
@@ -82,7 +82,7 @@ export const exerciseLibrary = [
     category: "Legs",
     difficulty: "Intermediate",
     videoUrl: "https://www.youtube.com/embed/ultWZbUMPL8",
-    thumbnail: "/exercises/squat.jpg",
+    thumbnail: "/exercises/placeholder.jpg",
     description: "King of leg exercises, targeting quads, glutes, and core stability.",
   },
   {
@@ -91,7 +91,7 @@ export const exerciseLibrary = [
     category: "Back",
     difficulty: "Intermediate",
     videoUrl: "https://www.youtube.com/embed/eGo4IYlbE5g",
-    thumbnail: "/exercises/pullups.jpg",
+    thumbnail: "/exercises/back.jpg",
     description: "Bodyweight exercise for lats, biceps, and overall back development.",
   },
   {
@@ -100,7 +100,7 @@ export const exerciseLibrary = [
     category: "Shoulders",
     difficulty: "Beginner",
     videoUrl: "https://www.youtube.com/embed/qEwKCR5JCog",
-    thumbnail: "/exercises/shoulder-press.jpg",
+    thumbnail: "/exercises/shoulder.jpg",
     description: "Overhead pressing movement for deltoid development.",
   },
   {
@@ -109,8 +109,88 @@ export const exerciseLibrary = [
     category: "Arms",
     difficulty: "Beginner",
     videoUrl: "https://www.youtube.com/embed/ykJmrZ5v0Oo",
-    thumbnail: "/exercises/bicep-curl.jpg",
+    thumbnail: "/exercises/bicep.jpg",
     description: "Isolation exercise for bicep peak and arm size.",
+  },
+]
+
+export const muscleGroupLibrary = [
+  {
+    slug: "back",
+    name: "Back",
+    image: "/exercises/back.jpg",
+    summary: "Build a strong, balanced back with pulls, rows, and posture-focused movements.",
+    exercises: [
+      { name: "Deadlift", howTo: "Stand with feet hip-width apart, grip the bar, brace your core, and drive through your heels while keeping your spine neutral." },
+      { name: "Lat Pulldown", howTo: "Sit tall, pull the bar to your upper chest, squeeze your lats, and return with control." },
+      { name: "Bent-Over Row", howTo: "Hinge at the hips, keep your back flat, row the weight toward your lower ribs, and lower slowly." },
+    ],
+  },
+  {
+    slug: "biceps",
+    name: "Biceps",
+    image: "/exercises/bicep.jpg",
+    summary: "Train your biceps with curls and controlled reps for better arm strength and shape.",
+    exercises: [
+      { name: "Barbell Curl", howTo: "Hold the bar with palms up, keep elbows tucked, curl toward your shoulders, and lower without swinging." },
+      { name: "Hammer Curl", howTo: "Use neutral grip dumbbells, curl without turning your wrists, and pause at the top for full contraction." },
+      { name: "Incline Dumbbell Curl", howTo: "Lean back on an incline bench and curl the weights slowly to isolate the biceps.", },
+    ],
+  },
+  {
+    slug: "triceps",
+    name: "Triceps",
+    image: "/exercises/tricep.jpg",
+    summary: "Target the triceps for stronger pressing and fuller-looking arms.",
+    exercises: [
+      { name: "Triceps Dip", howTo: "Lower your body with elbows close to your sides, press back up through your palms, and avoid shrugging your shoulders." },
+      { name: "Cable Pushdown", howTo: "Stand tall, keep elbows fixed, and push the rope down until your arms are fully extended." },
+      { name: "Skull Crusher", howTo: "Lower the EZ-bar toward your forehead while keeping elbows steady, then extend the arms back up." },
+    ],
+  },
+  {
+    slug: "shoulder",
+    name: "Shoulders",
+    image: "/exercises/shoulder.jpg",
+    summary: "Develop strong, stable shoulders with overhead pressing and lateral work.",
+    exercises: [
+      { name: "Overhead Press", howTo: "Brace your core, press the bar overhead without arching your lower back, and lower under control." },
+      { name: "Lateral Raise", howTo: "Raise dumbbells out to your sides until shoulder height, then lower slowly to feel the delts." },
+      { name: "Rear Delt Fly", howTo: "Hinge forward, lift the weights out to the side, and squeeze the rear delts without shrugging." },
+    ],
+  },
+  {
+    slug: "legs",
+    name: "Legs",
+    image: "/exercises/legs.jpg",
+    summary: "Build your lower body with squats, lunges, and hinging patterns for power and stability.",
+    exercises: [
+      { name: "Back Squat", howTo: "Set your feet shoulder-width apart, brace the core, and descend until your hips break parallel before driving up." },
+      { name: "Romanian Deadlift", howTo: "Hold dumbbells, hinge at the hips, keep a soft bend in your knees, and lower until you feel your hamstrings stretch." },
+      { name: "Walking Lunge", howTo: "Step into a long stride, lower both knees to 90 degrees, and push through the front foot to step forward." },
+    ],
+  },
+  {
+    slug: "chest",
+    name: "Chest",
+    image: "/exercises/chest.jpg",
+    summary: "Strengthen your chest with pressing and fly variations that improve upper-body power.",
+    exercises: [
+      { name: "Bench Press", howTo: "Plant your feet, lower the bar to your mid-chest, and press upward while keeping your shoulders packed down." },
+      { name: "Incline Dumbbell Press", howTo: "Set the bench to a slight incline, press the dumbbells up, and keep wrists stacked over elbows." },
+      { name: "Cable Fly", howTo: "Bring your hands together in front of you with a slight bend in the elbows and control the return." },
+    ],
+  },
+  {
+    slug: "forearms",
+    name: "Forearms",
+    image: "/exercises/forearms.jpg",
+    summary: "Improve grip strength and forearm endurance with wrist-focused and pull-based work.",
+    exercises: [
+      { name: "Wrist Curl", howTo: "Rest your forearms on your thighs, curl the bar upward, and lower slowly to work the flexors." },
+      { name: "Reverse Wrist Curl", howTo: "Use the same position but with palms down to target the extensors and improve wrist balance." },
+      { name: "Farmer’s Carry", howTo: "Hold heavy dumbbells at your sides, walk tall, and keep your shoulders steady and core braced." },
+    ],
   },
 ]
 
@@ -150,10 +230,50 @@ export const adminData = {
     { id: 5, member: "Ananya Singh", amount: 7999, plan: "Elite", date: "2024-12-13", status: "completed" },
   ],
   trainers: [
-    { id: 1, name: "Vikram Singh", specialization: "Strength Training", members: 45, rating: 4.9, status: "active" },
-    { id: 2, name: "Priya Sharma", specialization: "Yoga & Flexibility", members: 38, rating: 4.8, status: "active" },
-    { id: 3, name: "Arjun Patel", specialization: "CrossFit", members: 32, rating: 4.7, status: "active" },
-    { id: 4, name: "Neha Gupta", specialization: "Nutrition", members: 28, rating: 4.9, status: "on-leave" },
+    {
+      id: 1,
+      name: "Vikram Singh",
+      specialization: "Strength Training",
+      members: 45,
+      sessionsTaken: 126,
+      workingHoursToday: 8.5,
+      totalWorkingHours: 186,
+      rating: 4.9,
+      status: "active",
+    },
+    {
+      id: 2,
+      name: "Priya Sharma",
+      specialization: "Yoga & Flexibility",
+      members: 38,
+      sessionsTaken: 104,
+      workingHoursToday: 7.5,
+      totalWorkingHours: 164,
+      rating: 4.8,
+      status: "active",
+    },
+    {
+      id: 3,
+      name: "Arjun Patel",
+      specialization: "CrossFit",
+      members: 32,
+      sessionsTaken: 92,
+      workingHoursToday: 7,
+      totalWorkingHours: 151,
+      rating: 4.7,
+      status: "active",
+    },
+    {
+      id: 4,
+      name: "Neha Gupta",
+      specialization: "Nutrition",
+      members: 28,
+      sessionsTaken: 76,
+      workingHoursToday: 5.5,
+      totalWorkingHours: 138,
+      rating: 4.9,
+      status: "on-leave",
+    },
   ],
   weeklyAttendance: [
     { day: "Mon", members: 145 },
@@ -192,3 +312,58 @@ export const chatMessages = [
   { id: 4, sender: "member", name: "You", message: "Sounds good! Should I increase protein intake?", time: "10:38 AM" },
   { id: 5, sender: "trainer", name: "Vikram Singh", message: "Yes, aim for 2g per kg bodyweight. I'll send you a meal plan.", time: "10:40 AM", avatar: "/trainers/vikram.jpg" },
 ]
+
+export const trainerData = {
+  trainerId: "TRN-2024-008",
+  name: "Vikram Singh",
+  email: "vikram@titanfitness.in",
+  phone: "+91 98765 43001",
+  specialization: "Strength Training",
+  role: "trainer",
+  checkInTime: "06:00 AM",
+  checkOutTime: "09:00 PM",
+  todaySessions: 8,
+  weeklySessions: 42,
+  totalWorkingHours: 186,
+  monthWorkingHours: 128,
+  assignedMembers: [
+    { id: 1, name: "Rahul Sharma", goal: "Strength gain", nextSession: "Today, 7:00 PM", plan: "Upper body + mobility", status: "Active" },
+    { id: 2, name: "Ananya Singh", goal: "Fat loss", nextSession: "Tomorrow, 6:30 AM", plan: "Cardio + calorie deficit", status: "Due today" },
+    { id: 3, name: "Karan Mehta", goal: "Muscle gain", nextSession: "Today, 8:00 PM", plan: "Push day + high protein", status: "Active" },
+  ],
+  sessions: [
+    { id: 1, title: "Morning Strength Block", time: "06:30 AM", duration: "60 min", audience: "Elite members", mode: "In-gym" },
+    { id: 2, title: "Fat Loss Bootcamp", time: "08:00 AM", duration: "45 min", audience: "Open batch", mode: "In-gym" },
+    { id: 3, title: "Evening PT Slot", time: "06:00 PM", duration: "45 min", audience: "Rahul + Karan", mode: "1:1" },
+  ],
+  announcements: [
+    { id: 1, title: "Tomorrow's Core Session", content: "Core and conditioning class starts at 7:00 AM for all members.", priority: "high", time: "10 min ago" },
+    { id: 2, title: "Hydration Reminder", content: "Please keep a bottle and hit your water target before evening training.", priority: "medium", time: "1 hour ago" },
+  ],
+  chatThreads: [
+    { id: 1, sender: "member", name: "Rahul Sharma", message: "Can you review my squat form before the evening session?", time: "09:15 AM" },
+    { id: 2, sender: "trainer", name: "Vikram Singh", message: "Yes, send the clip and I will correct it before your next set.", time: "09:18 AM" },
+    { id: 3, sender: "member", name: "Ananya Singh", message: "I want a stricter diet plan for the next 2 weeks.", time: "09:22 AM" },
+  ],
+  assignmentDrafts: [
+    {
+      id: 1,
+      member: "Rahul Sharma",
+      dietPlan: "High-protein surplus with oats, chicken, rice, and paneer.",
+      workoutRoutine: "Push/Pull/Legs with progressive overload.",
+      notes: "Add 5 kg to deadlift target this month.",
+    },
+    {
+      id: 2,
+      member: "Ananya Singh",
+      dietPlan: "Controlled deficit with protein at every meal and more vegetables.",
+      workoutRoutine: "Low-impact cardio plus upper/lower split.",
+      notes: "Track step count daily and keep water intake high.",
+    },
+  ],
+  notifications: [
+    { id: 1, message: "3 members are waiting for today's session updates.", time: "5 min ago", read: false },
+    { id: 2, message: "Your broadcast announcement reached all active members.", time: "30 min ago", read: true },
+    { id: 3, message: "Check-out reminder set for 9:00 PM today.", time: "1 hour ago", read: false },
+  ],
+}

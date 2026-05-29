@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { Play, Clock, Flame, Filter, Search } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard/dashboard-header"
@@ -10,7 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { exerciseLibrary } from "@/lib/dashboard-data"
+import { exerciseLibrary, muscleGroupLibrary } from "@/lib/dashboard-data"
 
 const categories = ["All", "Chest", "Back", "Legs", "Shoulders", "Arms"]
 const difficulties = ["All", "Beginner", "Intermediate", "Advanced"]
@@ -36,6 +37,33 @@ export default function ExerciseLibrary() {
       />
 
       <div className="p-6 space-y-6">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-3xl border border-border bg-gradient-to-br from-primary/10 via-background to-background p-6 shadow-lg"
+        >
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="space-y-2">
+              <p className="text-sm uppercase tracking-[0.25em] text-primary">Muscle Group Explorer</p>
+              <h2 className="text-2xl font-semibold text-foreground">Choose a body part and learn the best exercises for it.</h2>
+              <p className="max-w-2xl text-muted-foreground">Each section has aesthetic visuals, exercise breakdowns, and simple coaching cues to help you train with confidence.</p>
+            </div>
+            <Badge className="w-fit bg-primary/15 text-primary">7 body-part guides</Badge>
+          </div>
+          <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {muscleGroupLibrary.map((group) => (
+              <Link key={group.slug} href={`/member/exercises/${group.slug}`} className="group block rounded-2xl border border-border bg-card/80 p-4 shadow-sm transition hover:-translate-y-1 hover:border-primary/60 hover:bg-card">
+                <div className="relative overflow-hidden rounded-xl">
+                  <img src={group.image} alt={group.name} className="h-36 w-full rounded-xl object-cover transition duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
+                  <span className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">{group.name}</span>
+                </div>
+                <p className="mt-4 text-sm text-muted-foreground">{group.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </motion.section>
+
         {/* Filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -94,6 +122,12 @@ export default function ExerciseLibrary() {
                     onClick={() => setSelectedExercise(exercise)}
                   >
                     <div className="relative aspect-video bg-muted/50 overflow-hidden">
+                      <img
+                        src={exercise.thumbnail}
+                        alt={exercise.name}
+                        className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-background/80 to-transparent">
                         <div className="w-16 h-16 rounded-full bg-primary/80 flex items-center justify-center group-hover:scale-110 transition-transform">
                           <Play className="w-8 h-8 text-primary-foreground ml-1" />

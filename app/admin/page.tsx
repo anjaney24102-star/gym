@@ -42,6 +42,9 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line, Cart
 const COLORS = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"]
 
 export default function AdminDashboard() {
+  const totalTrainerSessions = adminData.trainers.reduce((sum, trainer) => sum + trainer.sessionsTaken, 0)
+  const totalTrainerHours = adminData.trainers.reduce((sum, trainer) => sum + trainer.totalWorkingHours, 0)
+
   return (
     <div className="min-h-screen">
       <DashboardHeader 
@@ -82,6 +85,20 @@ export default function AdminDashboard() {
             icon={IndianRupee}
             trend={{ value: adminData.revenue.growth, isPositive: true }}
             delay={0.4}
+          />
+          <StatCard
+            title="Trainer Sessions"
+            value={totalTrainerSessions}
+            subtitle="Combined trainer sessions"
+            icon={CalendarCheck}
+            delay={0.5}
+          />
+          <StatCard
+            title="Trainer Hours"
+            value={`${totalTrainerHours}h`}
+            subtitle="Total trainer working hours"
+            icon={Clock}
+            delay={0.6}
           />
         </StatCardGrid>
 
@@ -313,6 +330,9 @@ export default function AdminDashboard() {
                       <div className="flex items-center gap-3">
                         <div className="text-right">
                           <p className="text-sm text-foreground">{trainer.members} members</p>
+                          <p className="text-xs text-muted-foreground">
+                            {trainer.sessionsTaken} sessions | {trainer.workingHoursToday}h today | {trainer.totalWorkingHours}h total
+                          </p>
                           <p className="text-xs text-yellow-400">★ {trainer.rating}</p>
                         </div>
                         <Badge 
